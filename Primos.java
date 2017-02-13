@@ -1,35 +1,32 @@
-
+/**
+* Esta aplicacion calcula cuales de los numeros que se pasan como parametro de entrada son primos o no.
+*
+* @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+*		  Ricardo Riol ricardo.riol@estudiante.uam.es
+*
+*/
 public class Primos {
 
 	/**
-	* Punto de entrada a la aplicacion.
+	* Este metodo calcula si el numero que se pasa como argumento de entrada es primo o no.
 	*
-	* Este metodo calcula si un número de primos que se pasan como argumentos son primos.
-	*
-	*
-	*@param args Los argumentos de la línea de comando.Se espera una lista de enteros. 
+	* @param numero El entero que se quiere evaluar si es primo o no. 
 	*/
+	public static boolean esPrimo(int numero){
+		if (numero < 2) {
+			return false;
+		}		
 
-	public static Boolean esPrimo(int numero){
-		
-		Boolean bool = Boolean.TRUE;
+		if (numero == 2) {
+			return true;
+		}		
+
+		boolean bool = true; 
 		int contador = 2;
-
-		if (numero < 2){
-			return Boolean.FALSE;
-		}		
-
-		if (numero == 2){
-			return Boolean.TRUE;
-		}		
-
-		while (contador < numero){
-
+		double raiz = Math.ceil(Math.sqrt(numero));	// Solo hace falta comprobar hasta la raiz redondeada del numero
+		while (contador <= raiz){
 			if (numero % contador == 0){
-				
-				bool = Boolean.FALSE;
-
-
+				bool = false;
 			}				
 			contador ++;
 		}	
@@ -37,22 +34,26 @@ public class Primos {
 		return bool;
 	}
 
+	/**
+	* Punto de entrada a la aplicacion.
+	*
+	* Este metodo calcula si el numero que se pasa como argumento de entrada es primo o no.
+	*
+	* @param args Los argumentos de la linea de comando. Se espera una lista de enteros. 
+	*/
 	public static void main(String [] args){
-		Boolean bool;
 		if (args.length < 1) {
 			System.out.println("Se espera un numero como parametro");
 			return;
 		}
 
 		for (String s: args) {
-			int numero = Integer.parseInt(s);
-			bool = esPrimo(numero);
+			int numero = Integer.parseInt(s);	// Una variable int, que convierte cada elemento de args a numerico
+			boolean bool = esPrimo(numero);		// Una variable boolean, que recibe si el numero es primo o no
 			
-			if (bool == Boolean.TRUE) {
+			if (bool) {
 				System.out.println("El numero "+numero+" SI es primo");
-			}
-
-			if (bool == Boolean.FALSE) {
+			} else {
 				System.out.println("El numero "+numero+" NO es primo");
 			}
 		}
