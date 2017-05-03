@@ -31,7 +31,7 @@ public class testerApartado2 {
 		System.out.println(tarea5.containsTask(tarea1)); //True
 		System.out.println(tarea1.containsTask(tarea5)); //false
 		
-		//Imprimimos el valor estimado de cada tarea
+		//Imprimimos cada tarea
 		for (Task t :Tasks.getInstance().getTasksSet()){
 			System.out.println(t);
 		}
@@ -40,13 +40,13 @@ public class testerApartado2 {
 		System.out.println(tarea3.removeTask(tarea2));//true
 		System.out.println(tarea3.removeTask(tarea5));//false
 		
-		//Imprimimos el valor estimado de cada tarea (ver que los valores cambiab debido a la eliminacion de la tarea 4)
+		//Imprimimos cada tarea (ver que los valores cambian debido a la eliminacion de la tarea 4)
 		for (Task t :Tasks.getInstance().getTasksSet()){
 			System.out.println(t);
 		}
 		
 		System.out.println();
-		//Imprimimos el valor estimado de cada tarea no elimanada
+		//Imprimimos cada tarea que todavía tiene un padre
 		for (Task t :Tasks.getInstance().getTasksSet()){
 			for (Task a: t.getTasks()){
 				System.out.println(a);

@@ -9,48 +9,64 @@ public abstract class Console {
 	private long tiempoActual;
 	
 	// Metodos
-	public Console() {
-		
-	}
 	
-	private void start(String taskName) {
+	protected void start(String ...args) {
+		if (args.length != 1) {
+			throw new IllegalArgumentException("Se debe introducir solo un argumento");
+		}
 		stop();
-		this.tareaActual = Tasks.getInstance().newTask(taskName);
+		this.tareaActual = Tasks.getInstance().newTask(args[0]);
 		this.tiempoActual = System.currentTimeMillis();
 	}
 	
-	private void stop() {
+	protected void stop(String ...args) {
+		if (args.length != 0) {
+			throw new IllegalArgumentException("No se deben introducir argumentos");
+		}
 		long minutos = (System.currentTimeMillis()-this.tiempoActual)/1000;
-		spend((int)minutos);
+		spend(""+minutos);
 		this.tareaActual = null;
 		this.tiempoActual = 0;
 	}
 	
-	private void addEstimate(int minutos) {
-		this.tareaActual.getEstimated().incrementTime(minutos);
+	protected void addEstimate(String ...args) {
+		if (args.length != 1) {
+			throw new IllegalArgumentException("Se debe introducir solo un argumento");
+		}
+		this.tareaActual.getEstimated().incrementTime(Integer.parseInt(args[0]));
 	}
 	
-	private void spend(Integer minutos) {
-		this.tareaActual.getDedicated().incrementTime(minutos);
+	protected void spend(String ...args) {
+		if (args.length != 1) {
+			throw new IllegalArgumentException("Se debe introducir solo un argumento");
+		}
+		this.tareaActual.getDedicated().incrementTime(Integer.parseInt(args[0]));
 	}
 	
-	private void parent(String ...parentTask) {
-		if (parentTask.length == 0) {
+	protected void parent(String ...args) {
+		if (args.length > 1) {
+			throw new IllegalArgumentException("Se deben introducir 0 o 1 argumentos");
+		} else if (args.length == 0) {
 			this.tareaActual.setParent(null);
 		} else {
-			this.tareaActual.setParent(Tasks.getInstance().searchByName(parentTask[0]));
+			this.tareaActual.setParent(Tasks.getInstance().searchByName(args[0]));
 		}
 	}
 	
-	private void list() {
+	protected void list(String ...args) {
+		if (args.length != 0) {
+			throw new IllegalArgumentException("No se deben introducir argumentos");
+		}
 		System.out.println(Tasks.getInstance().getTasksSet());
 	}
 	
-	private void status(String ...taskName) {
-		if (taskName.length == 0) {
+	protected void status(String ...args) {
+		if (args.length > 1) {
+			throw new IllegalArgumentException("Se deben introducir 0 o 1 argumentos");
+		} else if (args.length == 0) {
 			System.out.println(this.tareaActual);
 		} else {
-			System.out.println(Tasks.getInstance().searchByName(taskName[0]));
+			System.out.println(Tasks.getInstance().searchByName(args[0]));
 		}
 	}
 }

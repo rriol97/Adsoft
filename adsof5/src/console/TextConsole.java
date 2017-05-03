@@ -11,6 +11,13 @@ public class TextConsole extends Console {
 	// Metodos
 	public TextConsole() {
 		this.comandos = new TreeMap<>();
+		this.addCommands("start", super::start);
+		this.addCommands("stop", super::stop);
+		this.addCommands("addEstimate", super::addEstimate);
+		this.addCommands("spend", super::spend);
+		this.addCommands("parent", super::parent);
+		this.addCommands("list", super::list);
+		this.addCommands("status", super::status);
 	}
 	
 	public void run() throws IOException {
