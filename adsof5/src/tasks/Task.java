@@ -124,9 +124,14 @@ public class Task implements Comparable<Task> {
 	
 	@Override
 	public String toString(){
-		return this.name+" (Tarea Padre = "+this.parent+
-				") (Tiempo estimado = "+this.getEstimated()+") (Tiempo dedicado = "+
-				this.getDedicated()+")";
+		String ret = this.name+" (Tarea Padre = ";
+		if (this.parent == null) {
+			ret += "Ninguna";
+		} else {
+			ret += this.parent.getName();
+		}
+		return ret += ") (Tiempo estimado = "+this.getEstimated()+
+				") (Tiempo dedicado = "+this.getDedicated()+")";
 	}
 
 	

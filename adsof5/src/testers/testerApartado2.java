@@ -20,7 +20,7 @@ public class testerApartado2 {
 		tarea3.getEstimated().incrementTime(40);
 		tarea4.getEstimated().incrementTime(1000);
 		tarea5.getEstimated().incrementTime(30);
-		//Creamos la estructura del árbol
+		//Creamos la estructura del ï¿½rbol
 		tarea5.addTask(tarea3);
 		tarea3.addTask(tarea4);
 		tarea3.addTask(tarea2);
@@ -37,7 +37,7 @@ public class testerApartado2 {
 		}
 		
 		//Eliminamos un par de tareas de la lista
-		System.out.println(tarea3.removeTask(tarea4));//true
+		System.out.println(tarea3.removeTask(tarea2));//true
 		System.out.println(tarea3.removeTask(tarea5));//false
 		
 		//Imprimimos el valor estimado de cada tarea (ver que los valores cambiab debido a la eliminacion de la tarea 4)
