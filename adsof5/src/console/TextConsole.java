@@ -20,6 +20,10 @@ public class TextConsole extends Console {
 		this.addCommands("status", super::status);
 	}
 	
+	/**
+	 * Metodo que nos permite simular el comportamieno de una terminal con una serie de comandos predefinidos
+	 * @throws IOException Excepcion de entrada salida
+	 */
 	public void run() throws IOException {
 		BufferedReader buffer = 
 				new BufferedReader(
@@ -43,7 +47,7 @@ public class TextConsole extends Console {
 				if (this.comandos.containsKey(comando)) {
 					this.comandos.get(comando).execute();
 				} else {
-					System.out.println(this.comandos);
+					System.out.println(this.comandos.keySet());
 				}
 			}
 			
@@ -52,11 +56,20 @@ public class TextConsole extends Console {
 		buffer.close();
 	}
 	
+	/**
+	 * Metodo que nos permite anadir comandos al conjuntos de comandos a manejar
+	 * @param name Nombre del comando (es lo que deberemos introducir para que este sea ejecutado).
+	 * @param op Operacion asociada al comando
+	 */
 	public void addCommands(String name, Function op) {
 		this.comandos.put(name, op);
 	}
 	
-	
+	/**
+	 * Main que nos permite probar la funcionalidad de la terminal y sus comandos
+	 * @param args (No argumentos)
+	 * @throws IOException Excepcion de entrada salida
+	 */
 	public static void main(String[] args) throws IOException {
 		TextConsole consola = new TextConsole();
 		consola.run();

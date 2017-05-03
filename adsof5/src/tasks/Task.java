@@ -26,6 +26,11 @@ public class Task implements Comparable<Task> {
 		return this.name;
 	}
 	
+	/**
+	 * Metodo que nos permite anadir una subtarea a una tarea
+	 * @param t subtarea a anadir
+	 * @return true si se hizo correctamete, false en caso contrario
+	 */
 	public boolean addTask(Task t) {
 		if (this.containsTask(t)){
 			return false;
@@ -42,6 +47,11 @@ public class Task implements Comparable<Task> {
 		return true;
 	}
 	
+	/**
+	 * Metodo que nos permite eliminar una subtarea de una tarea
+	 * @param t subtarea a eliminar
+	 * @return true si se hizo correctamete, false en caso contrario
+	 */
 	public boolean removeTask(Task t) {
 		if (!this.containsTask(t)){
 			return false;
@@ -58,6 +68,11 @@ public class Task implements Comparable<Task> {
 		return Collections.unmodifiableSet(this.subTasks);
 	}
 	
+	/**
+	 * Metodo que nos permite ver si una tarea esta contenida en esta tarea
+	 * @param t Tarea a buscar en las subtareas
+	 * @return true si se hizo correctamete, false en caso contrario
+	 */
 	public boolean containsTask(Task t) {
 		Set<Task> subTasks = this.getTasks();
 		if (subTasks.isEmpty()) {
@@ -77,6 +92,11 @@ public class Task implements Comparable<Task> {
 		}
 	}
 	
+	/**
+	 * Metodo que nos devuelve la tarea padre
+	 * @param parent Tarea padre
+	 * @throws IllegalArgumentException Argumento incorrecto
+	 */
 	public void setParent(Task parent) throws IllegalArgumentException{
 		if (this.containsTask(parent)){
 			throw new IllegalArgumentException();

@@ -21,7 +21,11 @@ public class Tasks {
 	public Set<Task> getTasksSet() {
 		return Collections.unmodifiableSet(this.tasksSet);
 	}
-	
+	/**
+	 * Metodo que nos permite anadir al conjunto de tareas una tarea de forma ordenada
+	 * @param taskName nombre de la tarea a anadir
+	 * @return La tarea creada 
+	 */
 	public Task newTask(String taskName) {
 		if (searchByName(taskName) == null) {
 			Task tarea =  new Task(taskName);
@@ -32,6 +36,11 @@ public class Tasks {
 		}
 	}
 	
+	/**
+	 * Metodo que permite buscar una tarea concreta en el set de tareas ordenadas
+	 * @param name nombre de la tarea a encontrar
+	 * @return La tarea en cuestion
+	 */
 	public Task searchByName(String name) {
 		for (Task t : this.tasksSet) {
 			if (t.getName().equalsIgnoreCase(name)) {

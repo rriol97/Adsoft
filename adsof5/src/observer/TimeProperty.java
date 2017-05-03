@@ -1,7 +1,6 @@
 package observer;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class TimeProperty extends DefaultObservableProperty<Integer> implements AdjustableTime, PropertyObserver<Integer>{
 	// Atributos
@@ -11,11 +10,19 @@ public class TimeProperty extends DefaultObservableProperty<Integer> implements 
 		this.value = 0;
 	}
 	
+	/**
+	 * Metodo que nos permite anadir una propiedad observable (un entero).
+	 * @param p propiedad observable a anadir
+	 */
 	public void addProperty(ObservableProperty<Integer> p) {
 		p.addObserver(this);
 		this.incrementTime(p.getValue());
 	}
 	
+	/**
+	 * Metodo que nos permite eliminar una propiedad observable (un entero).
+	 * @param p propiedad observable a eliminar
+	 */
 	public void removeProperty(ObservableProperty<Integer> p) {
 		p.removeObserver(this);
 		this.incrementTime(-p.getValue());
