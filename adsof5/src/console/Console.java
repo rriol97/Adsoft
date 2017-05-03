@@ -14,7 +14,9 @@ public abstract class Console {
 		if (args.length != 1) {
 			throw new IllegalArgumentException("Se debe introducir solo un argumento");
 		}
-		stop();
+		if (this.tareaActual != null) {
+			stop();
+		}
 		this.tareaActual = Tasks.getInstance().newTask(args[0]);
 		this.tiempoActual = System.currentTimeMillis();
 	}
@@ -23,8 +25,9 @@ public abstract class Console {
 		if (args.length != 0) {
 			throw new IllegalArgumentException("No se deben introducir argumentos");
 		}
+		
 		long minutos = (System.currentTimeMillis()-this.tiempoActual)/1000;
-		spend(""+minutos);
+		spend(((Long)minutos).toString());
 		this.tareaActual = null;
 		this.tiempoActual = 0;
 	}
@@ -33,6 +36,11 @@ public abstract class Console {
 		if (args.length != 1) {
 			throw new IllegalArgumentException("Se debe introducir solo un argumento");
 		}
+		
+		if (this.tareaActual == null) {
+			throw new IllegalArgumentException("No existe ninguna tarea actual");
+		}
+		
 		this.tareaActual.getEstimated().incrementTime(Integer.parseInt(args[0]));
 	}
 	
@@ -40,10 +48,19 @@ public abstract class Console {
 		if (args.length != 1) {
 			throw new IllegalArgumentException("Se debe introducir solo un argumento");
 		}
+		
+		if (this.tareaActual == null) {
+			throw new IllegalArgumentException("No existe ninguna tarea actual");
+		}
+		
 		this.tareaActual.getDedicated().incrementTime(Integer.parseInt(args[0]));
 	}
 	
 	protected void parent(String ...args) {
+		if (this.tareaActual == null) {
+			throw new IllegalArgumentException("No existe ninguna tarea actual");
+		}
+		
 		if (args.length > 1) {
 			throw new IllegalArgumentException("Se deben introducir 0 o 1 argumentos");
 		} else if (args.length == 0) {
