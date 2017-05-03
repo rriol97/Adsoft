@@ -7,11 +7,11 @@ import java.util.TreeSet;
 public class Tasks {
 	// Atributos
 	private static Tasks Tasks = new Tasks();
-	private Set<Task> taskSet;
+	private Set<Task> tasksSet;
 	
 	// Metodos
 	private Tasks() {
-		this.taskSet = new TreeSet<>();
+		this.tasksSet = new TreeSet<>();
 	}
 	
 	public static Tasks getInstance(){
@@ -19,13 +19,13 @@ public class Tasks {
 	}
 	
 	public Set<Task> getTasksSet() {
-		return Collections.unmodifiableSet(this.taskSet);
+		return Collections.unmodifiableSet(this.tasksSet);
 	}
 	
 	public Task newTask(String taskName, Integer dedicated) {
 		if (searchByName(taskName) == null) {
 			Task tarea =  new Task(taskName, dedicated);
-			this.taskSet.add(tarea);
+			this.tasksSet.add(tarea);
 			return tarea;
 		} else {
 			throw new IllegalArgumentException();
@@ -33,7 +33,7 @@ public class Tasks {
 	}
 	
 	public Task searchByName(String name) {
-		for (Task t : this.taskSet) {
+		for (Task t : this.tasksSet) {
 			if (t.getName().equalsIgnoreCase(name)) {
 				return t;
 			}
