@@ -8,12 +8,18 @@ public class testerApartado2 {
 	public static void main(String[] args) {
 		
 		//Creamos tareas para poder "jugar" con ellas
-		Task tarea1 = Tasks.getInstance().newTask("Practica ADSOFT",100);
-		Task tarea2 = Tasks.getInstance().newTask("Practica PADSOFT",60);
-		Task tarea3 = Tasks.getInstance().newTask("Examen SOPER",200);
-		Task tarea4 = Tasks.getInstance().newTask("Examen LAB",1000);
-		Task tarea5 = Tasks.getInstance().newTask("Examen CN",2);
+		Task tarea1 = Tasks.getInstance().newTask("Practica ADSOFT");
+		Task tarea2 = Tasks.getInstance().newTask("Practica PADSOFT");
+		Task tarea3 = Tasks.getInstance().newTask("Examen SOPER");
+		Task tarea4 = Tasks.getInstance().newTask("Examen LAB");
+		Task tarea5 = Tasks.getInstance().newTask("Examen CN");
 		
+		//Le damos valores iniciales a nuestras tareas (tiempo estimado)
+		tarea1.getEstimated().incrementTime(100);
+		tarea2.getEstimated().incrementTime(1000);
+		tarea3.getEstimated().incrementTime(40);
+		tarea4.getEstimated().incrementTime(1000);
+		tarea5.getEstimated().incrementTime(30);
 		//Creamos la estructura del árbol
 		tarea5.addTask(tarea3);
 		tarea3.addTask(tarea4);

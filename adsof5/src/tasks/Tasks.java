@@ -22,9 +22,9 @@ public class Tasks {
 		return Collections.unmodifiableSet(this.tasksSet);
 	}
 	
-	public Task newTask(String taskName, Integer dedicated) {
+	public Task newTask(String taskName) {
 		if (searchByName(taskName) == null) {
-			Task tarea =  new Task(taskName, dedicated);
+			Task tarea =  new Task(taskName);
 			this.tasksSet.add(tarea);
 			return tarea;
 		} else {

@@ -15,12 +15,11 @@ public class Task implements Comparable<Task> {
 	private TimeProperty dedicated;
 	
 	// Metodos
-	public Task(String name, Integer estimated) {
+	public Task(String name) {
 		this.name = name;
 		this.subTasks = new TreeSet<>();
 		this.dedicated = new TimeProperty();
 		this.estimated = new TimeProperty();
-		this.estimated.setValue(estimated);
 	}
 	
 	public String getName() {
@@ -28,7 +27,15 @@ public class Task implements Comparable<Task> {
 	}
 	
 	public boolean addTask(Task t) {
-		t.setParent(this);
+		if (this.containsTask(t)){
+			return false;
+		}
+		
+		if (t.getParent() != null && !this.equals(t.getParent())){
+			throw new IllegalArgumentException();
+		}
+		
+		t.parent = this;
 		this.subTasks.add(t);
 		this.estimated.addProperty(t.estimated);
 		this.dedicated.addProperty(t.dedicated);
@@ -36,10 +43,11 @@ public class Task implements Comparable<Task> {
 	}
 	
 	public boolean removeTask(Task t) {
-		if (this.containsTask(t)==false){
+		if (!this.containsTask(t)){
 			return false;
 		}
-		t.setParent(null);
+		
+		t.parent = null;
 		this.subTasks.remove(t);
 		this.estimated.removeProperty(t.estimated);
 		this.dedicated.removeProperty(t.dedicated);
@@ -69,8 +77,18 @@ public class Task implements Comparable<Task> {
 		}
 	}
 	
-	public void setParent(Task t) {
-		this.parent = t;
+	public void setParent(Task parent) throws IllegalArgumentException{
+		if (this.containsTask(parent)){
+			throw new IllegalArgumentException();
+		}
+		
+		if (this.parent != null) {
+			this.parent.removeTask(this);	
+		}
+					
+		if (parent != null){
+			parent.addTask(this);
+		}
 	}
 	
 	public Task getParent() {
@@ -84,6 +102,20 @@ public class Task implements Comparable<Task> {
 	public AdjustableTime getDedicated() {
 		return this.dedicated;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if (o == this){
+			return true;
+		}
+		if (!(o instanceof Task)){
+			return false;
+		}
+		
+		Task t = (Task)o;
+		
+		return this.name.equals(t.getName());
+	}
 
 	@Override
 	public int compareTo(Task o) {
@@ -92,7 +124,9 @@ public class Task implements Comparable<Task> {
 	
 	@Override
 	public String toString(){
-		return this.name+" (Tiempo estimado = "+this.getEstimated()+")";
+		return this.name+" (Tarea Padre = "+this.parent+
+				") (Tiempo estimado = "+this.getEstimated()+") (Tiempo dedicado = "+
+				this.getDedicated()+")";
 	}
 
 	

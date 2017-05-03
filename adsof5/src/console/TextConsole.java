@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class TextConsole {
+public class TextConsole extends Console {
 	// Atributos
 	private Map<String, Function> comandos;
 	

@@ -10,6 +10,7 @@ public class TimeProperty extends DefaultObservableProperty<Integer> implements 
 	public TimeProperty() {
 		this.value = 0;
 	}
+	
 	public void addProperty(ObservableProperty<Integer> p) {
 		p.addObserver(this);
 		this.incrementTime(p.getValue());
