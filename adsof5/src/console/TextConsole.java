@@ -30,27 +30,30 @@ public class TextConsole extends Console {
 						new InputStreamReader(System.in));
 		
 		String linea;
-		while ((linea = buffer.readLine()) != null) {
+		while (!((linea = buffer.readLine()).equals(""))) {
 			String comando;
 			int sgteBlanco = linea.indexOf(" ");
-			if (sgteBlanco != -1) {
-				comando = linea.substring(0, sgteBlanco);
-				linea = linea.substring(sgteBlanco).trim();
-				if (this.comandos.containsKey(comando)) {
-					String argumentos[] = linea.split("\\s");
-					this.comandos.get(comando).execute(argumentos);
+			try {
+				if (sgteBlanco != -1) {
+					comando = linea.substring(0, sgteBlanco);
+					linea = linea.substring(sgteBlanco).trim();
+					if (this.comandos.containsKey(comando)) {
+						String argumentos[] = linea.split("\\s");
+						this.comandos.get(comando).execute(argumentos);
+					} else {
+						System.out.println(this.comandos.keySet());
+					}
 				} else {
-					System.out.println(this.comandos.keySet());
+					comando = linea;
+					if (this.comandos.containsKey(comando)) {
+						this.comandos.get(comando).execute();
+					} else {
+						System.out.println(this.comandos.keySet());
+					}
 				}
-			} else {
-				comando = linea;
-				if (this.comandos.containsKey(comando)) {
-					this.comandos.get(comando).execute();
-				} else {
-					System.out.println(this.comandos.keySet());
-				}
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
 			}
-			
 		}
 		
 		buffer.close();

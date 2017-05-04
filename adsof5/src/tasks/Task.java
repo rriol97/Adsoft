@@ -123,6 +123,14 @@ public class Task implements Comparable<Task> {
 		return this.dedicated;
 	}
 	
+	public void addRoot(Task t) {
+		
+	}
+	
+	public void removeRoot() {
+		
+	}
+	
 	@Override
 	public boolean equals(Object o){
 		if (o == this){

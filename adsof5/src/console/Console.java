@@ -2,7 +2,6 @@ package console;
 
 import tasks.*; 
 
-
 public abstract class Console {
 	// Atributos
 	private Task tareaActual;
@@ -16,12 +15,20 @@ public abstract class Console {
 	 */
 	protected void start(String ...args) {
 		if (args.length != 1) {
-			throw new IllegalArgumentException("Se debe introducir solo un argumento");
+			throw new IllegalArgumentException("Se debe introducir un único argumento");
 		}
 		if (this.tareaActual != null) {
 			stop();
 		}
-		this.tareaActual = Tasks.getInstance().newTask(args[0]);
+		
+		try {
+			this.tareaActual = Tasks.getInstance().newTask(args[0]);
+		} catch (IllegalArgumentException e) {
+			this.tiempoActual = System.currentTimeMillis();
+			this.tareaActual = Tasks.getInstance().searchByName(args[0]);
+			throw new IllegalArgumentException("Ya existe una tarea creada con ese nombre. "
+					+ "Se reanuda su ejecución");
+		}
 		this.tiempoActual = System.currentTimeMillis();
 	}
 	
@@ -85,7 +92,12 @@ public abstract class Console {
 		} else if (args.length == 0) {
 			this.tareaActual.setParent(null);
 		} else {
-			this.tareaActual.setParent(Tasks.getInstance().searchByName(args[0]));
+			Task t;
+			if ((t = Tasks.getInstance().searchByName(args[0])) == null) {
+				throw new IllegalArgumentException("No existe ninguna tarea con ese nombre");
+			} else {
+				this.tareaActual.setParent(t);
+			}
 		}
 	}
 	
