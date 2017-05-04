@@ -103,17 +103,17 @@ public class Task implements Comparable<Task> {
 	 * @param parent Tarea padre
 	 * @throws IllegalArgumentException Argumento incorrecto
 	 */
-	public void setParent(Task parent) throws IllegalArgumentException{
+	public void setParent(Task parent) {
 		if (this.containsTask(parent)){
 			throw new IllegalArgumentException();
 		}
 		
-		if (this.parent != null) {
-			this.parent.removeTask(this);	
-		}
-					
 		if (parent != null){
 			parent.addTask(this);
+		} else {
+			if (this.parent != null) {
+				this.parent.removeTask(this);	
+			}
 		}
 	}
 	

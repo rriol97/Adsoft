@@ -96,7 +96,11 @@ public abstract class Console {
 			if ((t = Tasks.getInstance().searchByName(args[0])) == null) {
 				throw new IllegalArgumentException("No existe ninguna tarea con ese nombre");
 			} else {
-				this.tareaActual.setParent(t);
+				try {
+					this.tareaActual.setParent(t);
+				} catch (IllegalArgumentException e) {
+					throw new IllegalArgumentException("Acción inválida");
+				}
 			}
 		}
 	}

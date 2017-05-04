@@ -52,7 +52,7 @@ public class TextConsole extends Console {
 					}
 				}
 			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
+				System.err.println(e.getMessage());
 			}
 		}
 		
