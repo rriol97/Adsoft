@@ -1,7 +1,5 @@
 package observer;
 
-
-
 public class TimeProperty extends DefaultObservableProperty<Integer> implements AdjustableTime, PropertyObserver<Integer>{
 	// Atributos
 	

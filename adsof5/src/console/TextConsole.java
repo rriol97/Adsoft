@@ -40,7 +40,7 @@ public class TextConsole extends Console {
 					String argumentos[] = linea.split("\\s");
 					this.comandos.get(comando).execute(argumentos);
 				} else {
-					System.out.println(this.comandos);
+					System.out.println(this.comandos.keySet());
 				}
 			} else {
 				comando = linea;

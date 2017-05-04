@@ -22,7 +22,11 @@ public abstract class DefaultObservableProperty<V> implements ObservableProperty
 			V oldValue = this.value;
 			this.value = newValue;
 			for (PropertyObserver<V> ob : this.observers) {
-				ob.propertyChanged(this, oldValue);
+				if (ob != null) {
+					ob.propertyChanged(this, oldValue);
+				} else {
+					System.out.println("Hola");
+				}
 			}
 		}
 	}

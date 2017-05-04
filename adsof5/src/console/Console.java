@@ -25,8 +25,9 @@ public abstract class Console {
 		this.tiempoActual = System.currentTimeMillis();
 	}
 	
-	/*
+	/**
 	 * Metodo que nos permite detener la ejecucion de una tarea
+	 * @param args (sin argumentos)
 	 */
 	protected void stop(String ...args) {
 		if (args.length != 0) {
@@ -40,7 +41,7 @@ public abstract class Console {
 	}
 	/**
 	 * Metodo que nos permite establecer el tiempo estimado de la tarea actual
-	 * @param args Minutos de tiempo estimado a anadir
+	 * @param args Minutos de tiempo estimado a anyadir
 	 */
 	protected void addEstimate(String ...args) {
 		if (args.length != 1) {
@@ -55,8 +56,8 @@ public abstract class Console {
 	}
 	
 	/**
-	 * Metodo que permite ver cuanto tiempo lleva la tarea ejecutandose
-	 * @param args Nombre de la tarea
+	 * Metodo que permite anyadir minutos al tiempo dedicado de la tarea actual
+	 * @param args Minutos de tiempo dedicado a anyadir
 	 */
 	protected void spend(String ...args) {
 		if (args.length != 1) {
@@ -100,8 +101,8 @@ public abstract class Console {
 	}
 	
 	/**
-	 * Metodo que permite obtener la tarea actual
-	 * @param args (no argumentos)
+	 * Metodo que permite imprimir una tarea en concreto o si no, la tarea actual
+	 * @param args el nombre de la tarea actual o nada
 	 */
 	protected void status(String ...args) {
 		if (args.length > 1) {
