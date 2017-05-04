@@ -10,16 +10,16 @@ public class Tasks implements PropertyObserver<Integer> {
 	// Atributos
 	private static Tasks Tasks;
 	private Set<Task> tasksSet;
-	private static TimeProperty estimatedTotal;
-	private static TimeProperty dedicatedTotal;
+	private TimeProperty estimatedTotal;
+	private TimeProperty dedicatedTotal;
 	
 	// Metodos
 	private Tasks() {
 		this.tasksSet = new TreeSet<>();
-		estimatedTotal = new TimeProperty();
-		dedicatedTotal = new TimeProperty();
-		estimatedTotal.addObserver(this);
-		dedicatedTotal.addObserver(this);
+		this.estimatedTotal = new TimeProperty();
+		this.dedicatedTotal = new TimeProperty();
+		this.estimatedTotal.addObserver(this);
+		this.dedicatedTotal.addObserver(this);
 	}
 	
 	public static Tasks getInstance(){
@@ -29,20 +29,22 @@ public class Tasks implements PropertyObserver<Integer> {
 	
 	@Override
 	public void propertyChanged(ObservableProperty<Integer> property, Integer oldValue) {
-		System.out.println("Tiempo estimado total: "+estimatedTotal.getValue());
-		System.out.println("Tiempo dedicado total: "+dedicatedTotal.getValue());
+		System.out.println("Tiempo estimado total: "+this.estimatedTotal.getValue());
+		System.out.println("Tiempo dedicado total: "+this.dedicatedTotal.getValue());
+	}
+	
+	public void addRoot(Task t) {
+		estimatedTotal.addProperty(t.getEstimated());
+		dedicatedTotal.addProperty(t.getDedicated());
+	}
+	
+	public void removeRoot(Task t) {
+		estimatedTotal.removeProperty(t.getEstimated());
+		dedicatedTotal.removeProperty(t.getDedicated());
 	}
 	
 	public Set<Task> getTasksSet() {
 		return Collections.unmodifiableSet(this.tasksSet);
-	}
-	
-	public static AdjustableTime getEstimatedTotal() {
-		return estimatedTotal;
-	}
-	
-	public static AdjustableTime getDedicatedTotal() {
-		return dedicatedTotal;
 	}
 	
 	/**
@@ -54,8 +56,7 @@ public class Tasks implements PropertyObserver<Integer> {
 		if (searchByName(taskName) == null) {
 			Task tarea =  new Task(taskName);
 			this.tasksSet.add(tarea);
-			estimatedTotal.addProperty(tarea.getEstimated());
-			dedicatedTotal.addProperty(tarea.getDedicated());
+			addRoot(tarea);
 			return tarea;
 		} else {
 			throw new IllegalArgumentException();

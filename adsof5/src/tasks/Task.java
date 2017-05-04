@@ -40,6 +40,10 @@ public class Task implements Comparable<Task> {
 			throw new IllegalArgumentException();
 		}
 		
+		if (t.parent == null) {
+			Tasks.getInstance().removeRoot(t);
+		}
+		
 		t.parent = this;
 		this.subTasks.add(t);
 		this.estimated.addProperty(t.estimated);
@@ -56,6 +60,8 @@ public class Task implements Comparable<Task> {
 		if (!this.containsTask(t)){
 			return false;
 		}
+		
+		Tasks.getInstance().addRoot(t);
 		
 		t.parent = null;
 		this.subTasks.remove(t);
@@ -121,14 +127,6 @@ public class Task implements Comparable<Task> {
 	
 	public AdjustableTime getDedicated() {
 		return this.dedicated;
-	}
-	
-	public void addRoot(Task t) {
-		
-	}
-	
-	public void removeRoot() {
-		
 	}
 	
 	@Override
