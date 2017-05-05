@@ -42,6 +42,7 @@ public class TextConsole extends Console {
 						this.comandos.get(comando).execute(argumentos);
 					} else {
 						System.out.println(this.comandos.keySet());
+						System.out.flush();
 					}
 				} else {
 					comando = linea;
@@ -49,9 +50,10 @@ public class TextConsole extends Console {
 						this.comandos.get(comando).execute();
 					} else {
 						System.out.println(this.comandos.keySet());
+						System.out.flush();
 					}
 				}
-			} catch (IllegalArgumentException e) {
+			}  catch (IllegalArgumentException e) {
 				System.err.println(e.getMessage());
 			}
 		}

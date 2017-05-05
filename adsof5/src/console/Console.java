@@ -59,7 +59,13 @@ public abstract class Console {
 			throw new IllegalArgumentException("No existe ninguna tarea actual");
 		}
 		
-		this.tareaActual.getEstimated().incrementTime(Integer.parseInt(args[0]));
+		try {
+			this.tareaActual.getEstimated().incrementTime(Integer.parseInt(args[0]));
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("El argumento introducido no es un entero");
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("El ajuste no puede dar un número negativo");
+		}
 	}
 	
 	/**
@@ -75,7 +81,13 @@ public abstract class Console {
 			throw new IllegalArgumentException("No existe ninguna tarea actual");
 		}
 		
-		this.tareaActual.getDedicated().incrementTime(Integer.parseInt(args[0]));
+		try {
+			this.tareaActual.getDedicated().incrementTime(Integer.parseInt(args[0]));
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("El argumento introducido no es un entero");
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("El ajuste no puede dar un número negativo");
+		}
 	}
 	
 	/**

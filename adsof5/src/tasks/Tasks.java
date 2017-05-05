@@ -29,8 +29,9 @@ public class Tasks implements PropertyObserver<Integer> {
 	
 	@Override
 	public void propertyChanged(ObservableProperty<Integer> property, Integer oldValue) {
-		System.out.println("Tiempo estimado total: "+this.estimatedTotal.getValue());
-		System.out.println("Tiempo dedicado total: "+this.dedicatedTotal.getValue());
+		System.out.println("Tiempo estimado total: "+this.estimatedTotal);
+		System.out.println("Tiempo dedicado total: "+this.dedicatedTotal);
+		System.out.flush();
 	}
 	
 	public void addRoot(Task t) {

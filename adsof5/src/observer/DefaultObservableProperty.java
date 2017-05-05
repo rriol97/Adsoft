@@ -17,7 +17,7 @@ public abstract class DefaultObservableProperty<V> implements ObservableProperty
 	 * Metodo que nos permite cambiar el valor 
 	 * @param newValue El nuevo valor 
 	 */
-	public void setValue(V newValue) {
+	protected void setValue(V newValue) {
 		if (!this.value.equals(newValue)) {
 			V oldValue = this.value;
 			this.value = newValue;
