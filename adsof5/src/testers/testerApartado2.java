@@ -20,12 +20,16 @@ public class testerApartado2 {
 		Task tarea5 = Tasks.getInstance().newTask("Examen CN");
 		
 		//Le damos valores iniciales a nuestras tareas (tiempo estimado)
-		tarea1.getEstimated().incrementTime(100);
-		tarea2.getEstimated().incrementTime(1000);
-		tarea3.getEstimated().incrementTime(40);
-		tarea4.getEstimated().incrementTime(1000);
-		tarea5.getEstimated().incrementTime(30);
-		//Creamos la estructura del �rbol
+		tarea4.getEstimated().incrementTime(4);
+		tarea5.getEstimated().incrementTime(2);
+		
+		//(tiempo dedicado)
+		tarea1.getDedicated().incrementTime(7);
+		tarea2.getDedicated().incrementTime(3);
+		tarea3.getDedicated().incrementTime(9);
+
+		
+		//Creamos la estructura del arbol
 		tarea5.addTask(tarea3);
 		tarea3.addTask(tarea4);
 		tarea3.addTask(tarea2);
