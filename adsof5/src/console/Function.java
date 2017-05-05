@@ -1,6 +1,6 @@
 package console;
 
-@FunctionalInterface
+
 /**
  * Interfaz que define el comportamiento de cualquier comando de la consola.
  * 
@@ -8,6 +8,7 @@ package console;
  *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
  *
  */
+@FunctionalInterface
 public interface Function {
 	/**
 	 * 

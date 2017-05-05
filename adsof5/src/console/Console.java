@@ -142,7 +142,11 @@ public abstract class Console {
 		if (args.length > 1) {
 			throw new IllegalArgumentException("Se deben introducir 0 o 1 argumentos");
 		} else if (args.length == 0) {
-			System.out.println(this.tareaActual);
+			if (this.tareaActual == null) {
+				throw new IllegalArgumentException("No existe ninguna tarea actual");
+			} else {
+				System.out.println(this.tareaActual);
+			}
 		} else {
 			System.out.println(Tasks.getInstance().searchByName(args[0]));
 		}
