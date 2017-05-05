@@ -29,8 +29,6 @@ public abstract class DefaultObservableProperty<V> implements ObservableProperty
 			for (PropertyObserver<V> ob : this.observers) {
 				if (ob != null) {
 					ob.propertyChanged(this, oldValue);
-				} else {
-					System.out.println("Hola");
 				}
 			}
 		}

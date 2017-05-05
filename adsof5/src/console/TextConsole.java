@@ -27,7 +27,7 @@ public class TextConsole extends Console {
 	}
 	
 	/**
-	 * Metodo que nos permite simular el comportamieno de una terminal con una serie de comandos predefinidos
+	 * Metodo que nos permite simular el comportamiento de una terminal con una serie de comandos predefinidos
 	 * @throws IOException Excepcion de entrada salida
 	 */
 	public void run() throws IOException {
