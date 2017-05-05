@@ -1,5 +1,12 @@
 package observer;
 
+/**
+ * Interfaz que define el comportamiento de una propiedad observable
+ * 
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public interface ObservableProperty<V> {
 	
 	/**

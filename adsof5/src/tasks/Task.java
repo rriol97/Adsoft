@@ -6,6 +6,12 @@ import java.util.TreeSet;
 
 import observer.*;
 
+/**
+ * Clase que implementa el comportamiento y los atributos de una tarea.
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class Task implements Comparable<Task> {
 	// Atributos
 	private final String name;

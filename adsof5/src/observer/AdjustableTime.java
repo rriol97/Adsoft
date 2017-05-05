@@ -1,5 +1,11 @@
 package observer;
 
+/**
+ * Interfaz que define el comportamiento de de una propiedad observable de tiempo
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public interface AdjustableTime extends ObservableProperty<Integer> {
 	/**
 	 * Metodo que nos permite incremetar el valor de una propiedad observable (este caso un entero).

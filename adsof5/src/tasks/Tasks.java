@@ -5,7 +5,12 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import observer.*;
-
+/**
+ * Clase que recoge todas las tareas ordenadas alfabeticamente
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class Tasks implements PropertyObserver<Integer> {
 	// Atributos
 	private static Tasks Tasks;

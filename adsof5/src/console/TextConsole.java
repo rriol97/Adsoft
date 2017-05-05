@@ -4,6 +4,12 @@ import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Clase que implementa la consola.
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class TextConsole extends Console {
 	// Atributos
 	private Map<String, Function> comandos;

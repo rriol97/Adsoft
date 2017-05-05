@@ -1,7 +1,12 @@
 package testers;
 
 import observer.*;
-
+/**
+ * Tester que prueba la funcionalidad del apartado 1
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class testerApartado1 {
 
 	public static void main(String[] args) {

@@ -2,7 +2,12 @@ package observer;
 
 import java.util.List;
 import java.util.ArrayList;
-
+/**
+ * Clase anonima que implementa los metodos y define los atributos de cualquier propiedad observable
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public abstract class DefaultObservableProperty<V> implements ObservableProperty<V>{
 	// Atributos
 	private List<PropertyObserver<V>> observers;

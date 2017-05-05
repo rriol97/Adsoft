@@ -2,6 +2,12 @@ package console;
 
 import tasks.*; 
 
+/**
+ * Clase abstracta que implementa los comandos (funciones que derivan de la interfaz function) y define los atributos de la futura consola 
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public abstract class Console {
 	// Atributos
 	private Task tareaActual;

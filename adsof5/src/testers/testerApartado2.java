@@ -2,7 +2,12 @@ package testers;
 
 import tasks.Task;
 import tasks.Tasks;
-
+/**
+ * Clase que prueba la funcionalidad de las tareas del apartado 2.
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class testerApartado2 {
 
 	public static void main(String[] args) {

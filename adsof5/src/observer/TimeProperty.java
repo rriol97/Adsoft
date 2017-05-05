@@ -1,5 +1,10 @@
 package observer;
-
+/**
+ * Clase que implementa un propiedad observable de tiempo que puede observar a su vez a otras propiedades.
+ * @author Alejandro Sanchez Sanz alejandro.sanchezsanz@estudiante.uam.es
+ *         Ricardo Riol Gonzalez ricardo.riol@estudiante.uam.es 
+ *
+ */
 public class TimeProperty extends DefaultObservableProperty<Integer> implements AdjustableTime, PropertyObserver<Integer>{
 	// Atributos
 	
